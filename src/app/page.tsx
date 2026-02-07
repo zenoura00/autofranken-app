@@ -401,7 +401,10 @@ export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [formError, setFormError] = useState<string | null>(null)
 
-  const scrollToForm = () => {
+  const scrollToForm = (serviceType?: string) => {
+    if (serviceType) {
+      setFormData(prev => ({ ...prev, serviceType }))
+    }
     if (formRef.current) {
       formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
@@ -626,28 +629,45 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Hero Section - Part 1: Title & CTA */}
-      <section className="py-12 md:py-20">
+      {/* Hero Section with Integrated Services */}
+      <section id="services" className="py-12 md:py-20">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
+          <div className="max-w-3xl mx-auto text-center mb-10 md:mb-14">
             <p className="text-emerald-600 font-medium mb-4">Ihr Experte in Nürnberg & Umgebung</p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
               Professionelle Küchen- & Möbelmontage
             </h2>
-            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
-              Zuverlässige Montage für Privatkunden und Möbelhäuser.
-              Lieferung und Aufbau in 150 km Umkreis.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700" onClick={scrollToForm}>
-                Kostenlose Anfrage stellen
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-              <a href="tel:+4917632333561" className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-gray-300 dark:border-gray-700 rounded-lg font-medium hover:bg-gray-50 dark:hover:bg-gray-900 transition">
-                <Phone className="w-4 h-4" />
-                Direkt anrufen
-              </a>
-            </div>
+          </div>
+
+          {/* Interactive Service Cards */}
+          <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-8 max-w-5xl mx-auto">
+            <button
+              type="button"
+              onClick={() => scrollToForm('kueche')}
+              className="group bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-2 sm:p-4 md:p-6 pt-4 sm:pt-6 md:pt-8 text-center border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:border-emerald-200 dark:hover:border-emerald-800 transition-all duration-300 hover:-translate-y-1 cursor-pointer min-h-[140px] sm:min-h-[200px] md:min-h-[280px] flex flex-col items-center justify-start"
+            >
+              <AnimatedKitchen />
+              <h3 className="font-bold text-xs sm:text-sm md:text-lg mb-1 md:mb-2 mt-1 md:mt-2">Küchenmontage</h3>
+              <p className="text-[10px] sm:text-xs md:text-sm text-gray-600 dark:text-gray-400 hidden sm:block">Komplette Montage inkl. Elektro- und Wasseranschluss</p>
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollToForm('moebel')}
+              className="group bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-2 sm:p-4 md:p-6 pt-4 sm:pt-6 md:pt-8 text-center border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:border-teal-200 dark:hover:border-teal-800 transition-all duration-300 hover:-translate-y-1 cursor-pointer min-h-[140px] sm:min-h-[200px] md:min-h-[280px] flex flex-col items-center justify-start"
+            >
+              <AnimatedFurniture />
+              <h3 className="font-bold text-xs sm:text-sm md:text-lg mb-1 md:mb-2 mt-1 md:mt-2">Möbelmontage</h3>
+              <p className="text-[10px] sm:text-xs md:text-sm text-gray-600 dark:text-gray-400 hidden sm:block">Aufbau von Schränken, Betten und Regalen</p>
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollToForm('lieferung')}
+              className="group bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-2 sm:p-4 md:p-6 pt-4 sm:pt-6 md:pt-8 text-center border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:border-emerald-200 dark:hover:border-emerald-800 transition-all duration-300 hover:-translate-y-1 cursor-pointer min-h-[140px] sm:min-h-[200px] md:min-h-[280px] flex flex-col items-center justify-start"
+            >
+              <AnimatedTruck />
+              <h3 className="font-bold text-xs sm:text-sm md:text-lg mb-1 md:mb-2 mt-1 md:mt-2">Lieferung</h3>
+              <p className="text-[10px] sm:text-xs md:text-sm text-gray-600 dark:text-gray-400 hidden sm:block">Transport und Lieferung direkt zu Ihnen</p>
+            </button>
           </div>
         </div>
       </section>
@@ -703,29 +723,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services - Animated Icons */}
-      <section id="services" className="py-16 bg-gray-50 dark:bg-gray-900">
-        <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-bold text-center mb-10">Unsere Leistungen</h2>
-          <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-8 max-w-5xl mx-auto">
-            <div className="group bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-2 sm:p-4 md:p-6 pt-4 sm:pt-6 md:pt-8 text-center border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:border-emerald-200 dark:hover:border-emerald-800 transition-all duration-300 hover:-translate-y-1 cursor-pointer min-h-[140px] sm:min-h-[200px] md:min-h-[280px] flex flex-col items-center justify-start">
-              <AnimatedKitchen />
-              <h3 className="font-bold text-xs sm:text-sm md:text-lg mb-1 md:mb-2 mt-1 md:mt-2">Küchenmontage</h3>
-              <p className="text-[10px] sm:text-xs md:text-sm text-gray-600 dark:text-gray-400 hidden sm:block">Komplette Montage inkl. Elektro- und Wasseranschluss</p>
-            </div>
-            <div className="group bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-2 sm:p-4 md:p-6 pt-4 sm:pt-6 md:pt-8 text-center border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:border-teal-200 dark:hover:border-teal-800 transition-all duration-300 hover:-translate-y-1 cursor-pointer min-h-[140px] sm:min-h-[200px] md:min-h-[280px] flex flex-col items-center justify-start">
-              <AnimatedFurniture />
-              <h3 className="font-bold text-xs sm:text-sm md:text-lg mb-1 md:mb-2 mt-1 md:mt-2">Möbelmontage</h3>
-              <p className="text-[10px] sm:text-xs md:text-sm text-gray-600 dark:text-gray-400 hidden sm:block">Aufbau von Schränken, Betten und Regalen</p>
-            </div>
-            <div className="group bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-2 sm:p-4 md:p-6 pt-4 sm:pt-6 md:pt-8 text-center border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:border-emerald-200 dark:hover:border-emerald-800 transition-all duration-300 hover:-translate-y-1 cursor-pointer min-h-[140px] sm:min-h-[200px] md:min-h-[280px] flex flex-col items-center justify-start">
-              <AnimatedTruck />
-              <h3 className="font-bold text-xs sm:text-sm md:text-lg mb-1 md:mb-2 mt-1 md:mt-2">Lieferung</h3>
-              <p className="text-[10px] sm:text-xs md:text-sm text-gray-600 dark:text-gray-400 hidden sm:block">Transport und Lieferung direkt zu Ihnen</p>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* Simple Form Section */}
       <section id="form" ref={formRef} className="py-16 scroll-mt-20">
