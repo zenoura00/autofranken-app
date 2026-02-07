@@ -640,45 +640,45 @@ export default function Home() {
             </h2>
           </div>
 
-          {/* Interactive Service Cards - Mobile First Grid */}
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4 lg:gap-8 max-w-5xl mx-auto">
+          {/* Interactive Service Cards - Always 3 Columns */}
+          <div className="grid grid-cols-3 gap-2 sm:gap-4 lg:gap-8 max-w-5xl mx-auto">
             <button
               type="button"
               onClick={() => scrollToForm('kueche')}
-              className="group bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-4 lg:p-6 text-center border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:border-emerald-200 dark:hover:border-emerald-800 transition-all duration-300 active:scale-98 cursor-pointer flex flex-row sm:flex-col items-center sm:items-center gap-4 sm:gap-0 sm:pt-6 lg:pt-8 sm:min-h-[200px] lg:min-h-[280px]"
+              className="group bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-2 sm:p-4 lg:p-6 pt-3 sm:pt-6 lg:pt-8 text-center border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:border-emerald-200 dark:hover:border-emerald-800 transition-all duration-300 active:scale-98 cursor-pointer flex flex-col items-center min-h-[120px] sm:min-h-[200px] lg:min-h-[280px]"
             >
-              <div className="w-20 h-20 sm:w-32 sm:h-32 flex-shrink-0">
+              <div className="w-16 h-16 sm:w-28 sm:h-28 lg:w-32 lg:h-32 flex-shrink-0">
                 <AnimatedKitchen />
               </div>
-              <div className="text-left sm:text-center flex-1">
-                <h3 className="font-bold text-base sm:text-sm lg:text-lg mb-1">Küchenmontage</h3>
-                <p className="text-sm sm:text-xs lg:text-sm text-gray-600 dark:text-gray-400">Komplette Montage inkl. Elektro- und Wasseranschluss</p>
+              <div className="text-center mt-1 sm:mt-2">
+                <h3 className="font-bold text-[11px] sm:text-sm lg:text-lg mb-0.5 sm:mb-1">Küchenmontage</h3>
+                <p className="text-[9px] sm:text-xs lg:text-sm text-gray-600 dark:text-gray-400 hidden sm:block">Komplette Montage inkl. Elektro- und Wasseranschluss</p>
               </div>
             </button>
             <button
               type="button"
               onClick={() => scrollToForm('moebel')}
-              className="group bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-4 lg:p-6 text-center border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:border-teal-200 dark:hover:border-teal-800 transition-all duration-300 active:scale-98 cursor-pointer flex flex-row sm:flex-col items-center sm:items-center gap-4 sm:gap-0 sm:pt-6 lg:pt-8 sm:min-h-[200px] lg:min-h-[280px]"
+              className="group bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-2 sm:p-4 lg:p-6 pt-3 sm:pt-6 lg:pt-8 text-center border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:border-teal-200 dark:hover:border-teal-800 transition-all duration-300 active:scale-98 cursor-pointer flex flex-col items-center min-h-[120px] sm:min-h-[200px] lg:min-h-[280px]"
             >
-              <div className="w-20 h-20 sm:w-32 sm:h-32 flex-shrink-0">
+              <div className="w-16 h-16 sm:w-28 sm:h-28 lg:w-32 lg:h-32 flex-shrink-0">
                 <AnimatedFurniture />
               </div>
-              <div className="text-left sm:text-center flex-1">
-                <h3 className="font-bold text-base sm:text-sm lg:text-lg mb-1">Möbelmontage</h3>
-                <p className="text-sm sm:text-xs lg:text-sm text-gray-600 dark:text-gray-400">Aufbau von Schränken, Betten und Regalen</p>
+              <div className="text-center mt-1 sm:mt-2">
+                <h3 className="font-bold text-[11px] sm:text-sm lg:text-lg mb-0.5 sm:mb-1">Möbelmontage</h3>
+                <p className="text-[9px] sm:text-xs lg:text-sm text-gray-600 dark:text-gray-400 hidden sm:block">Aufbau von Schränken, Betten und Regalen</p>
               </div>
             </button>
             <button
               type="button"
               onClick={() => scrollToForm('lieferung')}
-              className="group bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-4 lg:p-6 text-center border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:border-emerald-200 dark:hover:border-emerald-800 transition-all duration-300 active:scale-98 cursor-pointer flex flex-row sm:flex-col items-center sm:items-center gap-4 sm:gap-0 sm:pt-6 lg:pt-8 sm:min-h-[200px] lg:min-h-[280px]"
+              className="group bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-2 sm:p-4 lg:p-6 pt-3 sm:pt-6 lg:pt-8 text-center border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:border-emerald-200 dark:hover:border-emerald-800 transition-all duration-300 active:scale-98 cursor-pointer flex flex-col items-center min-h-[120px] sm:min-h-[200px] lg:min-h-[280px]"
             >
-              <div className="w-20 h-20 sm:w-32 sm:h-32 flex-shrink-0">
+              <div className="w-16 h-16 sm:w-28 sm:h-28 lg:w-32 lg:h-32 flex-shrink-0">
                 <AnimatedTruck />
               </div>
-              <div className="text-left sm:text-center flex-1">
-                <h3 className="font-bold text-base sm:text-sm lg:text-lg mb-1">Lieferung</h3>
-                <p className="text-sm sm:text-xs lg:text-sm text-gray-600 dark:text-gray-400">Transport und Lieferung direkt zu Ihnen</p>
+              <div className="text-center mt-1 sm:mt-2">
+                <h3 className="font-bold text-[11px] sm:text-sm lg:text-lg mb-0.5 sm:mb-1">Lieferung</h3>
+                <p className="text-[9px] sm:text-xs lg:text-sm text-gray-600 dark:text-gray-400 hidden sm:block">Transport und Lieferung direkt zu Ihnen</p>
               </div>
             </button>
           </div>
