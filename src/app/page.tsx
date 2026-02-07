@@ -576,20 +576,20 @@ export default function Home() {
         }
       `}</style>
 
-      {/* Header */}
+      {/* Header - Mobile First */}
       <header className="bg-white dark:bg-gray-950 border-b border-gray-100 dark:border-gray-800 sticky top-0 z-50">
-        <div className="container mx-auto py-4 px-4">
+        <div className="container mx-auto py-3 px-4 lg:py-4">
           <div className="flex justify-between items-center">
-            <Link href="/" className="flex items-center gap-3">
-              <div className="bg-emerald-600 rounded-lg p-2.5">
-                <Wrench className="w-6 h-6 text-white" />
+            <Link href="/" className="flex items-center gap-2 lg:gap-3">
+              <div className="bg-emerald-600 rounded-lg p-2">
+                <Wrench className="w-5 h-5 lg:w-6 lg:h-6 text-white" />
               </div>
               <div>
-                <h1 className="text-lg font-bold">Möbelmontage Nürnberg</h1>
+                <h1 className="text-base lg:text-lg font-bold leading-tight">Möbelmontage<br className="lg:hidden" /><span className="lg:hidden"> </span>Nürnberg</h1>
               </div>
             </Link>
 
-            <nav className="hidden md:flex items-center gap-6">
+            <nav className="hidden lg:flex items-center gap-6">
               {navItems.map((item) => (
                 <Link key={item.href} href={item.href} className="text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition text-sm font-medium">
                   {item.label}
@@ -601,26 +601,27 @@ export default function Home() {
               </a>
             </nav>
 
-            <div className="flex items-center gap-2">
-              <button onClick={toggleTheme} className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle theme">
+            <div className="flex items-center gap-1">
+              <button onClick={toggleTheme} className="p-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle theme">
                 {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
               </button>
-              <button className="md:hidden p-2" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+              <button className="lg:hidden p-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
                 {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
             </div>
           </div>
 
-          {/* Mobile Menu */}
+          {/* Mobile Menu - Full Screen Overlay */}
           {mobileMenuOpen && (
-            <div className="md:hidden mt-4 pb-4 border-t border-gray-100 dark:border-gray-800 pt-4">
-              <nav className="flex flex-col gap-2">
+            <div className="lg:hidden fixed inset-0 top-[57px] bg-white dark:bg-gray-950 z-40">
+              <nav className="flex flex-col p-4 gap-2">
                 {navItems.map((item) => (
-                  <Link key={item.href} href={item.href} className="px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-900 rounded-lg transition" onClick={() => setMobileMenuOpen(false)}>
+                  <Link key={item.href} href={item.href} className="px-4 py-4 text-lg font-medium hover:bg-gray-50 dark:hover:bg-gray-900 rounded-xl transition active:scale-98" onClick={() => setMobileMenuOpen(false)}>
                     {item.label}
                   </Link>
                 ))}
-                <a href="tel:+4917632333561" className="mt-2 px-4 py-3 bg-emerald-600 text-white rounded-lg text-center font-semibold">
+                <a href="tel:+4917632333561" className="mt-4 px-4 py-4 bg-emerald-600 text-white rounded-xl text-center text-lg font-semibold active:scale-98">
+                  <Phone className="w-5 h-5 inline mr-2" />
                   Jetzt anrufen
                 </a>
               </nav>
@@ -629,93 +630,105 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Hero Section with Integrated Services */}
-      <section id="services" className="py-12 md:py-20">
+      {/* Hero Section - Mobile First */}
+      <section id="services" className="py-8 lg:py-20">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center mb-10 md:mb-14">
-            <p className="text-emerald-600 font-medium mb-4">Ihr Experte in Nürnberg & Umgebung</p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
+          <div className="text-center mb-6 lg:mb-14">
+            <p className="text-emerald-600 font-medium text-sm lg:text-base mb-2 lg:mb-4">Ihr Experte in Nürnberg & Umgebung</p>
+            <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold leading-tight">
               Professionelle Küchen- & Möbelmontage
             </h2>
           </div>
 
-          {/* Interactive Service Cards */}
-          <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-8 max-w-5xl mx-auto">
+          {/* Interactive Service Cards - Mobile First Grid */}
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4 lg:gap-8 max-w-5xl mx-auto">
             <button
               type="button"
               onClick={() => scrollToForm('kueche')}
-              className="group bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-2 sm:p-4 md:p-6 pt-4 sm:pt-6 md:pt-8 text-center border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:border-emerald-200 dark:hover:border-emerald-800 transition-all duration-300 hover:-translate-y-1 cursor-pointer min-h-[140px] sm:min-h-[200px] md:min-h-[280px] flex flex-col items-center justify-start"
+              className="group bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-4 lg:p-6 text-center border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:border-emerald-200 dark:hover:border-emerald-800 transition-all duration-300 active:scale-98 cursor-pointer flex flex-row sm:flex-col items-center sm:items-center gap-4 sm:gap-0 sm:pt-6 lg:pt-8 sm:min-h-[200px] lg:min-h-[280px]"
             >
-              <AnimatedKitchen />
-              <h3 className="font-bold text-xs sm:text-sm md:text-lg mb-1 md:mb-2 mt-1 md:mt-2">Küchenmontage</h3>
-              <p className="text-[10px] sm:text-xs md:text-sm text-gray-600 dark:text-gray-400 hidden sm:block">Komplette Montage inkl. Elektro- und Wasseranschluss</p>
+              <div className="w-20 h-20 sm:w-32 sm:h-32 flex-shrink-0">
+                <AnimatedKitchen />
+              </div>
+              <div className="text-left sm:text-center flex-1">
+                <h3 className="font-bold text-base sm:text-sm lg:text-lg mb-1">Küchenmontage</h3>
+                <p className="text-sm sm:text-xs lg:text-sm text-gray-600 dark:text-gray-400">Komplette Montage inkl. Elektro- und Wasseranschluss</p>
+              </div>
             </button>
             <button
               type="button"
               onClick={() => scrollToForm('moebel')}
-              className="group bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-2 sm:p-4 md:p-6 pt-4 sm:pt-6 md:pt-8 text-center border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:border-teal-200 dark:hover:border-teal-800 transition-all duration-300 hover:-translate-y-1 cursor-pointer min-h-[140px] sm:min-h-[200px] md:min-h-[280px] flex flex-col items-center justify-start"
+              className="group bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-4 lg:p-6 text-center border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:border-teal-200 dark:hover:border-teal-800 transition-all duration-300 active:scale-98 cursor-pointer flex flex-row sm:flex-col items-center sm:items-center gap-4 sm:gap-0 sm:pt-6 lg:pt-8 sm:min-h-[200px] lg:min-h-[280px]"
             >
-              <AnimatedFurniture />
-              <h3 className="font-bold text-xs sm:text-sm md:text-lg mb-1 md:mb-2 mt-1 md:mt-2">Möbelmontage</h3>
-              <p className="text-[10px] sm:text-xs md:text-sm text-gray-600 dark:text-gray-400 hidden sm:block">Aufbau von Schränken, Betten und Regalen</p>
+              <div className="w-20 h-20 sm:w-32 sm:h-32 flex-shrink-0">
+                <AnimatedFurniture />
+              </div>
+              <div className="text-left sm:text-center flex-1">
+                <h3 className="font-bold text-base sm:text-sm lg:text-lg mb-1">Möbelmontage</h3>
+                <p className="text-sm sm:text-xs lg:text-sm text-gray-600 dark:text-gray-400">Aufbau von Schränken, Betten und Regalen</p>
+              </div>
             </button>
             <button
               type="button"
               onClick={() => scrollToForm('lieferung')}
-              className="group bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-2 sm:p-4 md:p-6 pt-4 sm:pt-6 md:pt-8 text-center border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:border-emerald-200 dark:hover:border-emerald-800 transition-all duration-300 hover:-translate-y-1 cursor-pointer min-h-[140px] sm:min-h-[200px] md:min-h-[280px] flex flex-col items-center justify-start"
+              className="group bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-4 lg:p-6 text-center border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:border-emerald-200 dark:hover:border-emerald-800 transition-all duration-300 active:scale-98 cursor-pointer flex flex-row sm:flex-col items-center sm:items-center gap-4 sm:gap-0 sm:pt-6 lg:pt-8 sm:min-h-[200px] lg:min-h-[280px]"
             >
-              <AnimatedTruck />
-              <h3 className="font-bold text-xs sm:text-sm md:text-lg mb-1 md:mb-2 mt-1 md:mt-2">Lieferung</h3>
-              <p className="text-[10px] sm:text-xs md:text-sm text-gray-600 dark:text-gray-400 hidden sm:block">Transport und Lieferung direkt zu Ihnen</p>
+              <div className="w-20 h-20 sm:w-32 sm:h-32 flex-shrink-0">
+                <AnimatedTruck />
+              </div>
+              <div className="text-left sm:text-center flex-1">
+                <h3 className="font-bold text-base sm:text-sm lg:text-lg mb-1">Lieferung</h3>
+                <p className="text-sm sm:text-xs lg:text-sm text-gray-600 dark:text-gray-400">Transport und Lieferung direkt zu Ihnen</p>
+              </div>
             </button>
           </div>
         </div>
       </section>
 
-      {/* Stats Section with Live Counter */}
-      <section className="py-10 md:py-14 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 border-y border-gray-200 dark:border-gray-700">
+      {/* Stats Section - Mobile First */}
+      <section className="py-8 lg:py-14 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 border-y border-gray-200 dark:border-gray-700">
         <div className="container mx-auto px-4">
           {/* Live Counter at Top */}
-          <div className="flex flex-col items-center justify-center mb-8">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="relative flex h-2.5 w-2.5">
+          <div className="flex flex-col items-center justify-center mb-6 lg:mb-8">
+            <div className="flex items-center gap-2 mb-3 lg:mb-4">
+              <span className="relative flex h-2 w-2 lg:h-2.5 lg:w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 lg:h-2.5 lg:w-2.5 bg-emerald-500"></span>
               </span>
-              <span className="text-sm font-medium text-gray-600 dark:text-gray-400">Seit 2018 aktiv</span>
+              <span className="text-xs lg:text-sm font-medium text-gray-600 dark:text-gray-400">Seit 2018 aktiv</span>
             </div>
             <LiveExperienceCounter />
           </div>
 
-          {/* Quick Stats Row */}
-          <div className="flex flex-wrap justify-center gap-6 md:gap-10 mb-10">
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-emerald-600">2000+</div>
-              <div className="text-xs md:text-sm text-gray-500 dark:text-gray-400">Montagen</div>
+          {/* Quick Stats - Mobile Grid */}
+          <div className="grid grid-cols-2 gap-4 sm:flex sm:flex-wrap sm:justify-center sm:gap-6 lg:gap-10 mb-8 lg:mb-10">
+            <div className="text-center bg-white/50 dark:bg-gray-800/50 rounded-xl p-3 sm:p-0 sm:bg-transparent">
+              <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-emerald-600">2000+</div>
+              <div className="text-xs lg:text-sm text-gray-500 dark:text-gray-400">Montagen</div>
             </div>
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-emerald-600">8+ Jahre</div>
-              <div className="text-xs md:text-sm text-gray-500 dark:text-gray-400">Erfahrung</div>
+            <div className="text-center bg-white/50 dark:bg-gray-800/50 rounded-xl p-3 sm:p-0 sm:bg-transparent">
+              <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-emerald-600">8+ Jahre</div>
+              <div className="text-xs lg:text-sm text-gray-500 dark:text-gray-400">Erfahrung</div>
             </div>
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-emerald-600">150km</div>
-              <div className="text-xs md:text-sm text-gray-500 dark:text-gray-400">Umkreis</div>
+            <div className="text-center bg-white/50 dark:bg-gray-800/50 rounded-xl p-3 sm:p-0 sm:bg-transparent">
+              <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-emerald-600">150km</div>
+              <div className="text-xs lg:text-sm text-gray-500 dark:text-gray-400">Umkreis</div>
             </div>
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-emerald-600">100%</div>
-              <div className="text-xs md:text-sm text-gray-500 dark:text-gray-400">Zufriedenheit</div>
+            <div className="text-center bg-white/50 dark:bg-gray-800/50 rounded-xl p-3 sm:p-0 sm:bg-transparent">
+              <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-emerald-600">100%</div>
+              <div className="text-xs lg:text-sm text-gray-500 dark:text-gray-400">Zufriedenheit</div>
             </div>
           </div>
 
-          {/* Partner Logos */}
+          {/* Partner Logos - Mobile Optimized */}
           <div className="max-w-4xl mx-auto">
-            <p className="text-center text-xs md:text-sm text-gray-500 dark:text-gray-400 mb-4">
+            <p className="text-center text-xs lg:text-sm text-gray-500 dark:text-gray-400 mb-3 lg:mb-4">
               Wir holen und montieren Ihre Möbel von allen bekannten Möbelhäusern
             </p>
-            <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 md:gap-4">
+            <div className="flex flex-wrap justify-center items-center gap-2 lg:gap-4">
               {['IKEA', 'XXXLutz', 'mömax', 'POCO', 'OBI', 'Höffner', 'Segmüller'].map((partner) => (
                 <div key={partner} className="px-3 py-1.5 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full border border-gray-200 dark:border-gray-700 hover:border-emerald-400 dark:hover:border-emerald-600 transition-colors">
-                  <span className="text-xs sm:text-sm font-semibold text-gray-600 dark:text-gray-300">{partner}</span>
+                  <span className="text-xs lg:text-sm font-semibold text-gray-600 dark:text-gray-300">{partner}</span>
                 </div>
               ))}
             </div>
@@ -723,30 +736,28 @@ export default function Home() {
         </div>
       </section>
 
-
-
-      {/* Unified Form Section */}
-      <section id="form" ref={formRef} className="py-16 scroll-mt-20">
+      {/* Unified Form Section - Mobile First */}
+      <section id="form" ref={formRef} className="py-8 lg:py-16 scroll-mt-16">
         <div className="container mx-auto px-4">
           <div className="max-w-xl mx-auto">
             {/* Combined Card: Benefits + Title + Form */}
             <div className="bg-gray-800 dark:bg-gray-800 rounded-2xl border border-gray-700 overflow-hidden shadow-xl">
               {/* Benefits Section */}
-              <div className="p-5 border-b border-gray-700">
-                <div className="grid grid-cols-2 gap-3 mb-3">
-                  <div className="flex items-center gap-2">
+              <div className="p-4 lg:p-5 border-b border-gray-700">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 lg:gap-3 mb-3">
+                  <div className="flex items-center gap-2 bg-gray-700/30 rounded-lg p-2 sm:p-0 sm:bg-transparent">
                     <Check className="w-5 h-5 text-emerald-500 flex-shrink-0" />
                     <span className="text-sm text-gray-200">Kostenlose Beratung</span>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 bg-gray-700/30 rounded-lg p-2 sm:p-0 sm:bg-transparent">
                     <Check className="w-5 h-5 text-emerald-500 flex-shrink-0" />
                     <span className="text-sm text-gray-200">Flexible Termine</span>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 bg-gray-700/30 rounded-lg p-2 sm:p-0 sm:bg-transparent">
                     <Check className="w-5 h-5 text-emerald-500 flex-shrink-0" />
                     <span className="text-sm text-gray-200">Faire Festpreise</span>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 bg-gray-700/30 rounded-lg p-2 sm:p-0 sm:bg-transparent">
                     <Check className="w-5 h-5 text-emerald-500 flex-shrink-0" />
                     <span className="text-sm text-gray-200">Professionelle Montage</span>
                   </div>
@@ -760,13 +771,13 @@ export default function Home() {
               </div>
 
               {/* Title Section */}
-              <div className="px-6 pt-6 pb-4 text-center">
-                <h2 className="text-2xl font-bold text-white mb-1">Jetzt Anfrage stellen</h2>
-                <p className="text-gray-400 text-sm">Kostenlos und unverbindlich</p>
+              <div className="px-4 lg:px-6 pt-4 lg:pt-6 pb-3 lg:pb-4 text-center">
+                <h2 className="text-xl lg:text-2xl font-bold text-white mb-1">Jetzt Anfrage stellen</h2>
+                <p className="text-gray-400 text-xs lg:text-sm">Kostenlos und unverbindlich</p>
               </div>
 
-              {/* Form Section */}
-              <div className="px-6 pb-6">
+              {/* Form Section - Mobile Optimized Inputs */}
+              <div className="px-4 lg:px-6 pb-4 lg:pb-6">
                 {formSubmitted ? (
                   <div className="text-center py-8">
                     <div className="w-16 h-16 bg-emerald-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -776,9 +787,9 @@ export default function Home() {
                     <p className="text-gray-400">Wir melden uns schnellstmöglich bei Ihnen.</p>
                   </div>
                 ) : (
-                  <div className="space-y-4">
+                  <div className="space-y-3 lg:space-y-4">
                     <Select onValueChange={(value) => setFormData({...formData, serviceType: value})} value={formData.serviceType}>
-                      <SelectTrigger className="bg-gray-900 border-gray-700 text-white">
+                      <SelectTrigger className="bg-gray-900 border-gray-700 text-white h-12 lg:h-11 text-base lg:text-sm rounded-xl">
                         <SelectValue placeholder="Art der Dienstleistung *" />
                       </SelectTrigger>
                       <SelectContent>
@@ -792,7 +803,7 @@ export default function Home() {
                       placeholder="Ihr Name *"
                       value={formData.name}
                       onChange={(e) => setFormData({...formData, name: e.target.value})}
-                      className="bg-gray-900 border-gray-700 text-white placeholder:text-gray-500"
+                      className="bg-gray-900 border-gray-700 text-white placeholder:text-gray-500 h-12 lg:h-11 text-base lg:text-sm rounded-xl"
                     />
 
                     <Input
@@ -800,30 +811,30 @@ export default function Home() {
                       type="tel"
                       value={formData.phone}
                       onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                      className="bg-gray-900 border-gray-700 text-white placeholder:text-gray-500"
+                      className="bg-gray-900 border-gray-700 text-white placeholder:text-gray-500 h-12 lg:h-11 text-base lg:text-sm rounded-xl"
                     />
 
                     <Input
                       placeholder="PLZ / Ort (optional)"
                       value={formData.location}
                       onChange={(e) => setFormData({...formData, location: e.target.value})}
-                      className="bg-gray-900 border-gray-700 text-white placeholder:text-gray-500"
+                      className="bg-gray-900 border-gray-700 text-white placeholder:text-gray-500 h-12 lg:h-11 text-base lg:text-sm rounded-xl"
                     />
 
                     <Textarea
                       placeholder="Beschreiben Sie Ihr Projekt (optional)"
                       value={formData.description}
                       onChange={(e) => setFormData({...formData, description: e.target.value})}
-                      className="min-h-[100px] bg-gray-900 border-gray-700 text-white placeholder:text-gray-500"
+                      className="min-h-[100px] bg-gray-900 border-gray-700 text-white placeholder:text-gray-500 text-base lg:text-sm rounded-xl"
                     />
 
                     {formError && (
-                      <div className="p-3 bg-red-900/20 border border-red-800 rounded-lg text-red-400 text-sm">
+                      <div className="p-3 bg-red-900/20 border border-red-800 rounded-xl text-red-400 text-sm">
                         {formError}
                       </div>
                     )}
 
-                    <Button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3" onClick={handleSubmit} disabled={isSubmitting}>
+                    <Button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold h-12 lg:h-11 text-base lg:text-sm rounded-xl active:scale-98" onClick={handleSubmit} disabled={isSubmitting}>
                       {isSubmitting ? <><Loader2 className="w-4 h-4 animate-spin mr-2" />Wird gesendet...</> : 'Anfrage absenden'}
                     </Button>
                   </div>
@@ -834,33 +845,41 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Section - Minimal */}
-      <section id="contact" className="py-16 bg-gray-50 dark:bg-gray-900">
+      {/* Contact Section - Mobile First */}
+      <section id="contact" className="py-8 lg:py-16 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto">
-            <h2 className="text-2xl font-bold text-center mb-8">Kontakt</h2>
-            <div className="grid sm:grid-cols-3 gap-6 text-center">
-              <a href="tel:+4917632333561" className="group">
-                <Phone className="w-8 h-8 text-emerald-600 mx-auto mb-2 group-hover:scale-110 transition-transform" />
-                <p className="font-medium">0176 32333561</p>
+            <h2 className="text-xl lg:text-2xl font-bold text-center mb-6 lg:mb-8">Kontakt</h2>
+
+            {/* Mobile: Stack, Desktop: Row */}
+            <div className="flex flex-col gap-4 sm:grid sm:grid-cols-3 sm:gap-6 text-center mb-6 lg:mb-10">
+              <a href="tel:+4917632333561" className="group flex items-center gap-4 sm:flex-col sm:gap-2 p-4 bg-white dark:bg-gray-800 rounded-xl sm:bg-transparent sm:p-0 active:scale-98">
+                <div className="w-12 h-12 sm:w-auto sm:h-auto bg-emerald-100 dark:bg-emerald-900/30 rounded-full flex items-center justify-center sm:bg-transparent">
+                  <Phone className="w-6 h-6 sm:w-8 sm:h-8 text-emerald-600 group-hover:scale-110 transition-transform" />
+                </div>
+                <p className="font-medium text-base sm:text-base">0176 32333561</p>
               </a>
-              <a href="mailto:info@moebelmontage-nuernberg.de" className="group">
-                <Mail className="w-8 h-8 text-emerald-600 mx-auto mb-2 group-hover:scale-110 transition-transform" />
-                <p className="font-medium text-sm">info@moebelmontage-nuernberg.de</p>
+              <a href="mailto:info@moebelmontage-nuernberg.de" className="group flex items-center gap-4 sm:flex-col sm:gap-2 p-4 bg-white dark:bg-gray-800 rounded-xl sm:bg-transparent sm:p-0 active:scale-98">
+                <div className="w-12 h-12 sm:w-auto sm:h-auto bg-emerald-100 dark:bg-emerald-900/30 rounded-full flex items-center justify-center sm:bg-transparent">
+                  <Mail className="w-6 h-6 sm:w-8 sm:h-8 text-emerald-600 group-hover:scale-110 transition-transform" />
+                </div>
+                <p className="font-medium text-sm sm:text-sm">info@moebelmontage-nuernberg.de</p>
               </a>
-              <div>
-                <MapPin className="w-8 h-8 text-emerald-600 mx-auto mb-2" />
-                <p className="font-medium">Nürnberg & 150 km</p>
+              <div className="flex items-center gap-4 sm:flex-col sm:gap-2 p-4 bg-white dark:bg-gray-800 rounded-xl sm:bg-transparent sm:p-0">
+                <div className="w-12 h-12 sm:w-auto sm:h-auto bg-emerald-100 dark:bg-emerald-900/30 rounded-full flex items-center justify-center sm:bg-transparent">
+                  <MapPin className="w-6 h-6 sm:w-8 sm:h-8 text-emerald-600" />
+                </div>
+                <p className="font-medium text-base sm:text-base">Nürnberg & 150 km</p>
               </div>
             </div>
 
             {/* WhatsApp CTA */}
-            <div className="mt-10 text-center">
+            <div className="text-center">
               <a
                 href="https://wa.me/4917632333561"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium transition"
+                className="inline-flex items-center gap-2 px-6 py-4 lg:py-3 bg-green-500 hover:bg-green-600 text-white rounded-xl font-medium transition active:scale-98 w-full sm:w-auto justify-center text-base"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -872,22 +891,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer - Minimal */}
-      <footer className="bg-gray-900 text-white py-8">
+      {/* Footer - Mobile First */}
+      <footer className="bg-gray-900 text-white py-6 lg:py-8">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="flex items-center gap-3">
+          <div className="flex flex-col gap-4 lg:flex-row lg:justify-between lg:items-center">
+            <div className="flex items-center gap-3 justify-center lg:justify-start">
               <div className="bg-emerald-600 rounded-lg p-2">
                 <Wrench className="w-5 h-5 text-white" />
               </div>
               <span className="font-medium">Möbelmontage Nürnberg</span>
             </div>
-            <div className="flex items-center gap-4 text-sm text-gray-400">
+            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-sm text-gray-400 text-center">
               <span>Mo – Sa: 08:00 – 20:00</span>
-              <span>|</span>
-              <a href="tel:+4917632333561">0176 32333561</a>
+              <span className="hidden sm:inline">|</span>
+              <a href="tel:+4917632333561" className="text-emerald-400">0176 32333561</a>
             </div>
-            <div className="flex gap-4 text-sm">
+            <div className="flex gap-4 text-sm justify-center lg:justify-end">
               <Link href="/impressum" className="text-gray-400 hover:text-white transition">Impressum</Link>
               <Link href="/datenschutz" className="text-gray-400 hover:text-white transition">Datenschutz</Link>
             </div>
@@ -898,14 +917,27 @@ export default function Home() {
         </div>
       </footer>
 
-      {/* Single Floating Button - Phone */}
-      <a
-        href="tel:+4917632333561"
-        className="fixed bottom-6 right-6 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full p-4 shadow-lg transition-all hover:scale-110 z-40"
-        aria-label="Anrufen"
-      >
-        <Phone className="w-6 h-6" />
-      </a>
+      {/* Floating Buttons - Mobile Optimized */}
+      <div className="fixed bottom-4 right-4 flex flex-col gap-3 z-40">
+        <a
+          href="https://wa.me/4917632333561"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-green-500 hover:bg-green-600 text-white rounded-full p-3.5 lg:p-4 shadow-lg transition-all active:scale-95"
+          aria-label="WhatsApp"
+        >
+          <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+        </a>
+        <a
+          href="tel:+4917632333561"
+          className="bg-emerald-600 hover:bg-emerald-700 text-white rounded-full p-3.5 lg:p-4 shadow-lg transition-all active:scale-95"
+          aria-label="Anrufen"
+        >
+          <Phone className="w-6 h-6" />
+        </a>
+      </div>
     </div>
   )
 }
