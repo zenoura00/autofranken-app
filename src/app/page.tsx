@@ -75,7 +75,7 @@ function LiveExperienceCounter() {
 // Animated Kitchen Icon - Full Installation Story
 function AnimatedKitchen() {
   return (
-    <div className="relative w-32 h-32 mx-auto mb-4 group-hover:scale-105 transition-transform duration-300">
+    <div className="relative w-full h-full mx-auto group-hover:scale-105 transition-transform duration-300">
       {/* Background glow */}
       <div className="absolute inset-0 bg-emerald-500/20 rounded-full blur-xl animate-pulse" />
 
@@ -161,7 +161,7 @@ function AnimatedKitchen() {
 // Animated Furniture Icon - Assembly Story
 function AnimatedFurniture() {
   return (
-    <div className="relative w-32 h-32 mx-auto mb-4 group-hover:scale-105 transition-transform duration-300">
+    <div className="relative w-full h-full mx-auto group-hover:scale-105 transition-transform duration-300">
       {/* Background glow */}
       <div className="absolute inset-0 bg-teal-500/20 rounded-full blur-xl animate-pulse" style={{ animationDelay: '0.5s' }} />
 
@@ -263,7 +263,7 @@ function AnimatedFurniture() {
 // Animated Truck Icon - Full Delivery Story
 function AnimatedTruck() {
   return (
-    <div className="relative w-32 h-32 mx-auto mb-4 group-hover:scale-105 transition-transform duration-300">
+    <div className="relative w-full h-full mx-auto group-hover:scale-105 transition-transform duration-300">
       {/* Background glow */}
       <div className="absolute inset-0 bg-emerald-500/20 rounded-full blur-xl animate-pulse" style={{ animationDelay: '1s' }} />
 
