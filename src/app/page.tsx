@@ -729,6 +729,34 @@ export default function Home() {
       <section id="form" ref={formRef} className="py-16 scroll-mt-20">
         <div className="container mx-auto px-4">
           <div className="max-w-xl mx-auto">
+            {/* Benefits Box */}
+            <div className="bg-gray-800/90 dark:bg-gray-800 backdrop-blur-sm rounded-2xl p-5 mb-8 border border-gray-700">
+              <div className="grid grid-cols-2 gap-3 mb-3">
+                <div className="flex items-center gap-2">
+                  <Check className="w-5 h-5 text-emerald-500 flex-shrink-0" />
+                  <span className="text-sm text-gray-200">Kostenlose Beratung</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Check className="w-5 h-5 text-emerald-500 flex-shrink-0" />
+                  <span className="text-sm text-gray-200">Flexible Termine</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Check className="w-5 h-5 text-emerald-500 flex-shrink-0" />
+                  <span className="text-sm text-gray-200">Faire Festpreise</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Check className="w-5 h-5 text-emerald-500 flex-shrink-0" />
+                  <span className="text-sm text-gray-200">Professionelle Montage</span>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 text-xs text-gray-400 border-t border-gray-700 pt-3">
+                <svg className="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+                </svg>
+                <span>Ihre Daten werden vertraulich behandelt.</span>
+              </div>
+            </div>
+
             <h2 className="text-2xl font-bold text-center mb-2">Jetzt Anfrage stellen</h2>
             <p className="text-center text-gray-600 dark:text-gray-400 mb-8">Kostenlos und unverbindlich</p>
 
@@ -790,10 +818,6 @@ export default function Home() {
                     <Button className="w-full bg-emerald-600 hover:bg-emerald-700" onClick={handleSubmit} disabled={isSubmitting}>
                       {isSubmitting ? <><Loader2 className="w-4 h-4 animate-spin mr-2" />Wird gesendet...</> : 'Anfrage absenden'}
                     </Button>
-
-                    <p className="text-xs text-center text-gray-500">
-                      Ihre Daten werden vertraulich behandelt.
-                    </p>
                   </div>
                 )}
               </CardContent>
