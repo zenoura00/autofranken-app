@@ -725,55 +725,60 @@ export default function Home() {
 
 
 
-      {/* Simple Form Section */}
+      {/* Unified Form Section */}
       <section id="form" ref={formRef} className="py-16 scroll-mt-20">
         <div className="container mx-auto px-4">
           <div className="max-w-xl mx-auto">
-            {/* Benefits Box */}
-            <div className="bg-gray-800/90 dark:bg-gray-800 backdrop-blur-sm rounded-2xl p-5 mb-8 border border-gray-700">
-              <div className="grid grid-cols-2 gap-3 mb-3">
-                <div className="flex items-center gap-2">
-                  <Check className="w-5 h-5 text-emerald-500 flex-shrink-0" />
-                  <span className="text-sm text-gray-200">Kostenlose Beratung</span>
+            {/* Combined Card: Benefits + Title + Form */}
+            <div className="bg-gray-800 dark:bg-gray-800 rounded-2xl border border-gray-700 overflow-hidden shadow-xl">
+              {/* Benefits Section */}
+              <div className="p-5 border-b border-gray-700">
+                <div className="grid grid-cols-2 gap-3 mb-3">
+                  <div className="flex items-center gap-2">
+                    <Check className="w-5 h-5 text-emerald-500 flex-shrink-0" />
+                    <span className="text-sm text-gray-200">Kostenlose Beratung</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Check className="w-5 h-5 text-emerald-500 flex-shrink-0" />
+                    <span className="text-sm text-gray-200">Flexible Termine</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Check className="w-5 h-5 text-emerald-500 flex-shrink-0" />
+                    <span className="text-sm text-gray-200">Faire Festpreise</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Check className="w-5 h-5 text-emerald-500 flex-shrink-0" />
+                    <span className="text-sm text-gray-200">Professionelle Montage</span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Check className="w-5 h-5 text-emerald-500 flex-shrink-0" />
-                  <span className="text-sm text-gray-200">Flexible Termine</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check className="w-5 h-5 text-emerald-500 flex-shrink-0" />
-                  <span className="text-sm text-gray-200">Faire Festpreise</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check className="w-5 h-5 text-emerald-500 flex-shrink-0" />
-                  <span className="text-sm text-gray-200">Professionelle Montage</span>
+                <div className="flex items-center gap-2 text-xs text-gray-400 border-t border-gray-700 pt-3">
+                  <svg className="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+                  </svg>
+                  <span>Ihre Daten werden vertraulich behandelt.</span>
                 </div>
               </div>
-              <div className="flex items-center gap-2 text-xs text-gray-400 border-t border-gray-700 pt-3">
-                <svg className="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
-                </svg>
-                <span>Ihre Daten werden vertraulich behandelt.</span>
+
+              {/* Title Section */}
+              <div className="px-6 pt-6 pb-4 text-center">
+                <h2 className="text-2xl font-bold text-white mb-1">Jetzt Anfrage stellen</h2>
+                <p className="text-gray-400 text-sm">Kostenlos und unverbindlich</p>
               </div>
-            </div>
 
-            <h2 className="text-2xl font-bold text-center mb-2">Jetzt Anfrage stellen</h2>
-            <p className="text-center text-gray-600 dark:text-gray-400 mb-8">Kostenlos und unverbindlich</p>
-
-            <Card className="border-gray-200 dark:border-gray-700 dark:bg-gray-900">
-              <CardContent className="p-6">
+              {/* Form Section */}
+              <div className="px-6 pb-6">
                 {formSubmitted ? (
                   <div className="text-center py-8">
-                    <div className="w-16 h-16 bg-emerald-100 dark:bg-emerald-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Check className="w-8 h-8 text-emerald-600" />
+                    <div className="w-16 h-16 bg-emerald-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Check className="w-8 h-8 text-emerald-500" />
                     </div>
-                    <h4 className="text-xl font-bold text-emerald-600 mb-2">Anfrage gesendet!</h4>
-                    <p className="text-gray-600 dark:text-gray-400">Wir melden uns schnellstmöglich bei Ihnen.</p>
+                    <h4 className="text-xl font-bold text-emerald-500 mb-2">Anfrage gesendet!</h4>
+                    <p className="text-gray-400">Wir melden uns schnellstmöglich bei Ihnen.</p>
                   </div>
                 ) : (
                   <div className="space-y-4">
                     <Select onValueChange={(value) => setFormData({...formData, serviceType: value})} value={formData.serviceType}>
-                      <SelectTrigger>
+                      <SelectTrigger className="bg-gray-900 border-gray-700 text-white">
                         <SelectValue placeholder="Art der Dienstleistung *" />
                       </SelectTrigger>
                       <SelectContent>
@@ -787,6 +792,7 @@ export default function Home() {
                       placeholder="Ihr Name *"
                       value={formData.name}
                       onChange={(e) => setFormData({...formData, name: e.target.value})}
+                      className="bg-gray-900 border-gray-700 text-white placeholder:text-gray-500"
                     />
 
                     <Input
@@ -794,34 +800,36 @@ export default function Home() {
                       type="tel"
                       value={formData.phone}
                       onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                      className="bg-gray-900 border-gray-700 text-white placeholder:text-gray-500"
                     />
 
                     <Input
                       placeholder="PLZ / Ort (optional)"
                       value={formData.location}
                       onChange={(e) => setFormData({...formData, location: e.target.value})}
+                      className="bg-gray-900 border-gray-700 text-white placeholder:text-gray-500"
                     />
 
                     <Textarea
                       placeholder="Beschreiben Sie Ihr Projekt (optional)"
                       value={formData.description}
                       onChange={(e) => setFormData({...formData, description: e.target.value})}
-                      className="min-h-[100px]"
+                      className="min-h-[100px] bg-gray-900 border-gray-700 text-white placeholder:text-gray-500"
                     />
 
                     {formError && (
-                      <div className="p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg text-red-600 dark:text-red-400 text-sm">
+                      <div className="p-3 bg-red-900/20 border border-red-800 rounded-lg text-red-400 text-sm">
                         {formError}
                       </div>
                     )}
 
-                    <Button className="w-full bg-emerald-600 hover:bg-emerald-700" onClick={handleSubmit} disabled={isSubmitting}>
+                    <Button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3" onClick={handleSubmit} disabled={isSubmitting}>
                       {isSubmitting ? <><Loader2 className="w-4 h-4 animate-spin mr-2" />Wird gesendet...</> : 'Anfrage absenden'}
                     </Button>
                   </div>
                 )}
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
         </div>
       </section>
